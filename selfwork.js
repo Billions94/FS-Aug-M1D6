@@ -25,9 +25,10 @@ console.log(sum)
 */
 title("Ex . C")
 
-
-
-
+function getRandom(min) {
+    return Math.floor(Math.random() * 20) + min
+}
+console.log(getRandom(6))
 
 /* Ex.D
     Create a variable called "me" and assign to it an object containing the following information: name = your name, surname = your surname, age = your age.
@@ -97,35 +98,71 @@ console.log(whoIsBigger(10, 8))
 */
 title("Ex .3")
 
-function splitMe(n){
-    newArr = []
-
-    for (let i = 0; i < n.length; i++) {
-        newArr.push(newArr.split(''))
-    }
-    return newArr
+function splitMe(str) {
+    newArr = str.split(' ')
+   return newArr
 }
-console.log(splitMe('I Love You'))
+console.log(splitMe('I Love Coding'))
 /* Ex.4
     Write a function called "deleteOne" which receives a string and a boolean as parameters. If the boolean value is true it should return the string without the first letter, otherwise it should remove the last one from it.
 */
 title("Ex .4")
 
+function deleteOne(str, boolean) {
 
-
+    if (boolean === true) {
+        str = str.slice(1)
+    }
+    else {
+        str = str.slice(0, str.length - 1)
+    }
+    return str
+}
+console.log(deleteOne("true"))
 
 /* Ex.5
    Write a function called "onlyLetters" which receives a string as a parameter and returns it removing all the digits.
    Ex.: onlyLetters("I have 4 dogs")  => returns "I have  dogs"
 */
+title("Ex .5")
 
+function onlyLetters(x) {
+    let str = x.replace(/\d+/g, "");
+    console.log(str);
+  }
+  onlyLetters("I have 4 dogs")
 /* Ex.6 
    Write a function called "isThisAnEmail" which receives a string as a parameter and returns true if the string is a valid email address.
 */
+title("Ex .6")
+
+function isThisAnEmail(x) {
+    let emailexp = /\S+@\S+.\S+/;
+    console.log(emailexp.test(x));
+  }
+  isThisAnEmail("amail.com");
 
 /* Ex.7
    Write a function called "whatDayIsIt" that should return the current day of the week.
 */
+title("Ex .7")
+
+function whatDayIsIt() {
+    let date = new Date().getDay();
+    let weekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    console.log(weekdays[date]);
+  }
+  whatDayIsIt();
+  
+
 
 /* Ex.8
     Write a function called "rollTheDices" which receives a number as a parameter.
@@ -137,59 +174,107 @@ title("Ex .4")
         values: [3, 3, 4]
     }
 */
+title("Ex .8")
 
+function rollTheDices(num){
+    let sum = 0
+    let array = []
+
+    for (let i = 0; i < num; i++){
+        array.push(Math.floor(Math.random() * 6))
+        array[i] += sum
+    }
+    let obj = {
+        sum: num,
+        values: array,
+    }
+    return obj
+}
+console.log(rollTheDices(3))
 /* Ex.9
    Write a function called "howManyDays" which receives a date as a parameter and should return the number of days passed since that date.
 */
+title("Ex .9")
+
+
 
 /* Ex.10
    Write a function called "isTodayMyBirthday" which should return true if today's your birthday, false otherwise.
 */
+title("Ex .10")
 
+function isTodayMyBirthday(x) {
+    let bd = new Date(x).getDate();
+    let bm = new Date(x).getMonth();
+    let date = new Date().getDate();
+    let month = new Date().getMonth();
+    if (bd === date && bm === month) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  }
+  isTodayMyBirthday("08/17/1994");
+  
 // JS Arrays // Objs
 // NOTE: movies array is defined at the end of this file!
 
 /* Ex.11
    Write a function called "deleteProp" which receives an object and a string as parameters, and returns the given object after deleting its property named as the given string.
 */
+title("Ex .11")
+
+function deleteProp(x){
+
+}
 
 /* Ex.12 
     Write a function called "olderMovie" which finds the oldest movie in the array provided at the end of this file.
 */
+title("Ex .12")
+
 
 /* Ex.13
     Write a function called "countMovies" which returns the number of movies contained in the array provided at the end of this file.
 */
+title("Ex .13")
 
 /* Ex.14
     Write a function called "onlyTheTitles" which creates an array with just the titles of the movies provided in the array at the end of the file.
 */
+title("Ex .14")
 
 /* Ex.15
    Write a function called "onlyInThisMillennium" which returns only the movies produced in this millennium.
 */
+title("Ex .15")
 
 /* Ex.16 
     Write a function called "getMovieById" which receives an id as a parameter and returns the movie with the given id.
 */
+title("Ex .16")
 
 /* Ex.17
     Write a function called "sumAllTheYears" which returns the sum of all the years in which the movies provided have been produced.
 */
+title("Ex .17")
 
 /* Ex.18
     Write a function called "searchByTitle" which receives a string as a parameter and returns all the movies which contain that string in the title.
 */
+title("Ex .18")
 
 /* Ex.19
     Write a function called "searchAndDivide" which receives a string as a parameter and returns an object;
     this object should contain an array called "match", made by all the movies which contain the given string in the title,
     and another array "unmatch" with all the remaining ones.
 */
+title("Ex .19")
 
 /* Ex.20
    Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
 */
+title("Ex .20")
 
 // [EXTRAS] JS Advanced
 
