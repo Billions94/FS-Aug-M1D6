@@ -253,7 +253,7 @@ function isThisAnEmail(x) {
   let emailexp = /\S+@\S+.\S+/;
   console.log(emailexp.test(x));
 }
-isThisAnEmail("amail.com");
+isThisAnEmail("am@ail.com");
 
 /* Ex.7
  Write a function called "whatDayIsIt" that should return the current day of the week.
@@ -389,12 +389,12 @@ console.log(countMovies(movies))
 */
 title("Ex . 14")
 
-function onlyTheTitles(_movies) {
-  let arrayOfTitles = []
-  for (let i = 0; i < _movies.length; i++) {
-      arrayOfTitles.push(_movies[i].Title)
+function onlyTheTitles(_movie) {
+  let titles = []
+  for (let i = 0; i < _movie.length; i++) {
+      titles.push(_movie[i].Title)
   }
-  return arrayOfTitles
+  return titles
 }
 
 console.log(onlyTheTitles(movies))
@@ -405,28 +405,68 @@ console.log(onlyTheTitles(movies))
 */
 title("Ex . 15")
 
+function onlyInThisMillennium(_movies) {
+  let newArr = []
+  for (let i = 0; i < _movies.length; i++) {
+    _movies[i].Year = parseInt(_movies[i].Year)
+    if (_movies[i].Year >= 2000) {
+      newArr.push(movies[i])
+    }
+  }
+  return newArr
+}
 
+console.log(onlyInThisMillennium(movies))
 
 /* Ex.16 
   Write a function called "getMovieById" which receives an id as a parameter and returns the movie with the given id.
 */
 title("Ex . 16")
 
+function getMovieById(_id) {
+  for (let i = 0; i < movies.length; i++) {
+    if (_id === movies[i].imdbID) {
+      return movies[i]
+    }
+  }
+}
 
+console.log(getMovieById("tt1731697"))
 
 /* Ex.17
   Write a function called "sumAllTheYears" which returns the sum of all the years in which the movies provided have been produced.
 */
 title("Ex . 17")
 
+function sumAllTheYears(_movies) {
+  let sum = 0
+  for (let i = 0; i < _movies.length; i++) {
+    _movies[i].Year = parseInt(_movies[i].Year)
+    sum += _movies[i].Year
+  }
+  return sum
+}
 
+console.log(sumAllTheYears(movies))
 
 /* Ex.18
   Write a function called "searchByTitle" which receives a string as a parameter and returns all the movies which contain that string in the title.
 */
 title("Ex . 18")
 
+let newString = "Avengers"
 
+function searchByTitle(_imHiddenInTheTitle) {
+  let newArrayFullOfMovies = []
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.includes(newString)) {
+      newArrayFullOfMovies.push(movies[i])
+    }
+  }
+  return newArrayFullOfMovies
+}
+
+console.log(searchByTitle(newString))
 
 /* Ex.19
   Write a function called "searchAndDivide" which receives a string as a parameter and returns an object;
@@ -435,14 +475,36 @@ title("Ex . 18")
 */
 title("Ex . 19")
 
+function searchAndDivide(_imString) {
+  let match = []
+  let unmatch = []
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.includes(newString)) {
+      match.push(movies[i])
+    } else {
+      unmatch.push(movies[i])
+    }
+  }
+  var obj = {
+    match:  match,
+    unmatch: unmatch
+  }
+  return obj
+}
 
+console.log(searchAndDivide(newString))
 
 /* Ex.20
  Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
 */
 title("Ex . 20")
 
+function removeIndex (_index) {
+  delete movies[_index]
+  return movies
+}
 
+console.log(removeIndex(3))
 
 // [EXTRAS] JS Advanced
 
@@ -473,3 +535,10 @@ Create a function called "isItPrime" that receives a number as a parameter and r
  */
 title("Ex . 23")
 
+function isItPrime(_number) {
+  for(let i = 2; i < _number; i++)
+    if(_number % i === 0) return false;
+  return _number > 1;
+}
+
+console.log(isItPrime(7001))
